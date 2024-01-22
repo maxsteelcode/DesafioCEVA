@@ -5,3 +5,10 @@
     padding: 100px 20px;
     margin-bottom: 0;
 }
+
+.bi {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    fill: currentcolor;
+}

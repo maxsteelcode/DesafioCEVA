@@ -32,25 +32,48 @@
             </div>
         </div>
 
-        <div class="container  mt-4 border rounded">
-            <asp:GridView ID="gvViagem" runat="server" AutoGenerateColumns="false" CssClass="table table-borderless" BorderStyle="None">
-                <Columns>
-                    <asp:BoundField DataField="Code_5C" HeaderText="Code_5C" SortExpression="Code_5C" />
-                    <asp:BoundField DataField="Code_5P" HeaderText="Code_5P" SortExpression="Code_5P" />
-                    <asp:TemplateField HeaderText="Codes">
-                        <ItemTemplate>
-                            <asp:Literal runat="server" Text='<%# string.Join(", ", ((RastreadorEntregasEntities.Viagem)Container.DataItem).Codes) %>'></asp:Literal>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:BoundField DataField="Fornecedor" HeaderText="Fornecedor" SortExpression="Fornecedor" />
-                    <asp:TemplateField HeaderText="Pedidos">
-                        <ItemTemplate>
-                            <asp:Literal runat="server" Text='<%# string.Join(", ", ((RastreadorEntregasEntities.Viagem)Container.DataItem).Pedidos) %>'></asp:Literal>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
+        <div class="container">
+            <div class="mt-4 border rounded">
+                <asp:GridView ID="gvViagem" runat="server" AutoGenerateColumns="false" CssClass="table table-borderless" BorderStyle="None">
+                    <Columns>
+                        <asp:BoundField DataField="Code_5C" HeaderText="Code_5C" SortExpression="Code_5C" />
+                        <asp:BoundField DataField="Code_5P" HeaderText="Code_5P" SortExpression="Code_5P" />
+                        <asp:TemplateField HeaderText="Codes">
+                            <ItemTemplate>
+                                <asp:Literal runat="server" Text='<%# string.Join(", ", ((RastreadorEntregasEntities.Viagem)Container.DataItem).Codes) %>'></asp:Literal>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="Fornecedor" HeaderText="Fornecedor" SortExpression="Fornecedor" />
+                        <asp:TemplateField HeaderText="Pedidos">
+                            <ItemTemplate>
+                                <asp:Literal runat="server" Text='<%# string.Join(", ", ((RastreadorEntregasEntities.Viagem)Container.DataItem).Pedidos) %>'></asp:Literal>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </div>
         </div>
+
+        <div class="container">
+            <div class="alert alert-danger" role="alert" id="divAlertError" runat="server">
+                <h4 class="alert-heading">Ops!</h4>
+                <p>
+                    <asp:Label ID="lblMensagemErro" runat="server"></asp:Label>
+                </p>
+                <hr>
+                <p class="mb-0">Caso o erra persita, favor informar ao suporte de T.I. </p>
+            </div>
+
+            <div class="alert alert-warning d-flex align-items-center" role="alert" id="divAlertAviso" runat="server">
+                <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Warning:">
+                    <use xlink:href="#exclamation-triangle-fill" />
+                </svg>
+                <div>
+                    <asp:Label ID="lblMensagemAlerta" runat="server"></asp:Label>
+                </div>
+            </div>
+        </div>
+
     </form>
 
 </asp:Content>
