@@ -12,47 +12,47 @@ namespace RastreadorEntregasServices
     public class RastreadorClient : IRastreadorClient
     {
         public HttpClient _client;
-        private const string _apiUrl = "https://qa1orionbr.cevalogistics.com/WCFOrionMobilityMilkRun/Servicos/SincronizarService.svc/SincronizarCutOff/";
+        private const string _apiUrl = "/WCFOrionMobilityMilkRun/Servicos/SincronizarService.svc/SincronizarCutOff";
         private readonly JsonSerializerOptions _options;
         private ViagemMilkrunResponse _viagemMilkRunResponse;
+        private const string _host = "qa1orionbr.cevalogistics.com";
 
         public RastreadorClient()
         {
-            _client = new HttpClient();
-            //_client.BaseAddress = new Uri("https://qa1orionbr.cevalogistics.com/WCFOrionMobilityMilkRun/Servicos/SincronizarService.svc/");
-            _client.Timeout = new TimeSpan(0, 0, 10);
-            _options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            try
+            {
+                _client = new HttpClient
+                {
+                    BaseAddress = new Uri("https://qa1orionbr.cevalogistics.com"),
+                    Timeout = new TimeSpan(0, 0, 30)
+                };
+                _options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public async Task<ViagemMilkrunResponse> Post(int viagem)
         {
             try
             {
+                // 0002528460
+                _client.DefaultRequestHeaders.Host = _host;
+                _client.DefaultRequestHeaders.Add("Viagem", viagem.ToString());                
 
-                string apiUrl = "https://qa1orionbr.cevalogistics.com/WCFOrionMobilityMilkRun/Servicos/SincronizarService.svc/SincronizarCutOff";
-                Uri uri = new Uri(apiUrl);
-                string host = uri.Host;
-
-                // Set the Host header
-                _client.DefaultRequestHeaders.Host = host;
-                _client.DefaultRequestHeaders.Add("Viagem", viagem.ToString());
-                HttpContent content = new StringContent("", System.Text.Encoding.UTF8, "application/json");
-
-                using (var response = await _client.PostAsync(apiUrl, null))
+                using (var response = await _client.PostAsync(_apiUrl, null))
                 {
-
                     if (response.IsSuccessStatusCode)
                     {
                         var apiResponse = await response.Content.ReadAsStreamAsync();
                         _viagemMilkRunResponse = await JsonSerializer.DeserializeAsync<ViagemMilkrunResponse>(apiResponse, _options);
                     }
-
                 }
-
             }
-            catch (Exception e)
+            catch (Exception)
             {
-
                 throw;
             }
 

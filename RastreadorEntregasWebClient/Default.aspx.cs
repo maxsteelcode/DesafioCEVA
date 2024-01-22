@@ -15,13 +15,19 @@ public partial class _Default : System.Web.UI.Page
 
     protected async void btnBuscarViagem_Click(object sender, EventArgs e)
     {
-        if (ValidarForm())
+        try
         {
-            ViagemMilkrunResponse viagemMilkrunResponse = await new RastreadorClient().Post(int.Parse(txtViagem.Text));
-            gvViagem.DataSource = viagemMilkrunResponse.SincronizarCutOffResult.Viagem;
-            gvViagem.DataBind();
-        }        
-        
+            if (ValidarForm())
+            {
+                ViagemMilkrunResponse viagemMilkrunResponse = await new RastreadorClient().Post(int.Parse(txtViagem.Text));
+                gvViagem.DataSource = viagemMilkrunResponse.SincronizarCutOffResult.Viagem;
+                gvViagem.DataBind();
+            }
+        }
+        catch (Exception)
+        {
+            throw;
+        }   
     }
 
     /// <summary>
@@ -32,7 +38,7 @@ public partial class _Default : System.Web.UI.Page
     {
         if (!string.IsNullOrEmpty(txtViagem.Text))
         {
-            int viagem = 0;
+            int viagem;
 
             if (int.TryParse(txtViagem.Text, out viagem))
             {                
@@ -43,11 +49,9 @@ public partial class _Default : System.Web.UI.Page
             txtViagem.Text = String.Empty;
             divInvalidFeedback.InnerText = "Favor informar um número de viagem válido.";
             divInvalidFeedback.Visible = true;
-
         }
-        // usuário recebe feedback de que precisa digitar o número da viagem
+        // usuário recebe feedback de que precisa digitar o número da viagem ou que o valor informado é inválido
         formBusca.Attributes["class"] = formBusca.Attributes["class"] + " was-validated";
         return false;
     }
-
 }
