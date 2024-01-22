@@ -1,0 +1,6 @@
+C:\Users\max.daniel\source\repos\CEVA\RastreadorEntregasSln\RastreadorEntregasEntities\bin\Debug\RastreadorEntregasEntities.dll
+C:\Users\max.daniel\source\repos\CEVA\RastreadorEntregasSln\RastreadorEntregasEntities\bin\Debug\RastreadorEntregasEntities.pdb
+C:\Users\max.daniel\source\repos\CEVA\RastreadorEntregasSln\RastreadorEntregasEntities\obj\Debug\RastreadorEntregasEntities.csproj.AssemblyReference.cache
+C:\Users\max.daniel\source\repos\CEVA\RastreadorEntregasSln\RastreadorEntregasEntities\obj\Debug\RastreadorEntregasEntities.csproj.CoreCompileInputs.cache
+C:\Users\max.daniel\source\repos\CEVA\RastreadorEntregasSln\RastreadorEntregasEntities\obj\Debug\RastreadorEntregasEntities.dll
+C:\Users\max.daniel\source\repos\CEVA\RastreadorEntregasSln\RastreadorEntregasEntities\obj\Debug\RastreadorEntregasEntities.pdb
