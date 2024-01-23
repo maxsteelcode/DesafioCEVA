@@ -34,5 +34,5 @@ Antes de começar, certifique-se de ter os seguintes pré-requisitos instalados 
 
 6. Pressione `F5` ou clique em "Start" para compilar e executar a aplicação.
 
-A aplicação agora deve estar sendo executada localmente em seu navegador padrão. Abra um navegador e vá para `http://localhost:<porta>` para visualizar a aplicação.
+A aplicação agora deve estar sendo executada localmente em seu navegador padrão. Abra um navegador e vá para `http://localhost:62765` para visualizar a aplicação.
 
