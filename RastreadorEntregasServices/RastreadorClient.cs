@@ -40,7 +40,7 @@ namespace RastreadorEntregasServices
             {
                 // 0002528460
                 _client.DefaultRequestHeaders.Host = _host;
-                _client.DefaultRequestHeaders.Add("Viagem", "erqer"); //viagem.ToString());                
+                _client.DefaultRequestHeaders.Add("Viagem", viagem.ToString());                
 
                 using (var response = await _client.PostAsync(_apiUrl, null))
                 {
